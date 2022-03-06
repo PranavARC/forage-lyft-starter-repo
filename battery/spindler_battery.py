@@ -1,5 +1,5 @@
 from battery.battery import Battery
-import datetime
+from datetime import datetime
 
 class SpindlerBattery(Battery):
     def __init__(self, last_service_date, current_date):
