@@ -4,23 +4,21 @@ from engine.willoughby_engine import WilloughbyEngine
 from engine.sternman_engine import SternmanEngine
 from battery.nubbin_battery import NubbinBattery
 from battery.spindler_battery import SpindlerBattery
-import datetime
+from tires.carrigan_tires import CarriganTires
+from tires.octoprime_tires import OctoprimeTires
 
 class CarFactory():
-    def create_calliope(current_date, last_service_date, current_mileage, last_service_mileage):
-        return Car(CapuletEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date, current_date))
+    def create_calliope(current_date, last_service_date, current_mileage, last_service_mileage, tire_wear):
+        return Car(CapuletEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date, current_date), CarriganTires(tire_wear))
     
-    def create_glissade(current_date, last_service_date, current_mileage, last_service_mileage):
-        return Car(WilloughbyEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date, current_date))
+    def create_glissade(current_date, last_service_date, current_mileage, last_service_mileage, tire_wear):
+        return Car(WilloughbyEngine(last_service_mileage, current_mileage), SpindlerBattery(last_service_date, current_date), OctoprimeTires(tire_wear))
 
-    def create_palindrome(current_date, last_service_date, warning_light_on):
-        return Car(SternmanEngine(warning_light_on), SpindlerBattery(last_service_date, current_date))
+    def create_palindrome(current_date, last_service_date, warning_light_on, tire_wear):
+        return Car(SternmanEngine(warning_light_on), SpindlerBattery(last_service_date, current_date), CarriganTires(tire_wear))
 
-    def create_rorschach(current_date, last_service_date, current_mileage, last_service_mileage):
-        return Car(WilloughbyEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date, current_date))
+    def create_rorschach(current_date, last_service_date, current_mileage, last_service_mileage, tire_wear):
+        return Car(WilloughbyEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date, current_date), OctoprimeTires(tire_wear))
 
-    def create_thovex(current_date, last_service_date, current_mileage, last_service_mileage):
-        return Car(CapuletEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date, current_date))
-
-# x_car = CarFactory().create_palindrome(datetime.datetime.now().replace(year=datetime.datetime.now().year - 2), datetime.datetime.now())
-# print(x_car.battery.last_service_date)
+    def create_thovex(current_date, last_service_date, current_mileage, last_service_mileage, tire_wear):
+        return Car(CapuletEngine(last_service_mileage, current_mileage), NubbinBattery(last_service_date, current_date), CarriganTires(tire_wear))
